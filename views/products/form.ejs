@@ -1,0 +1,24 @@
+<%- include("../layout") %>
+<form method="POST" action="<%= product._id ? '/products/edit/' + product._id : '/products/create' %>">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" value="<%= product.name || '' %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Price</label>
+    <input type="number" name="price" value="<%= product.price || '' %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Quantity</label>
+    <input type="number" name="quantity" value="<%= product.quantity || '' %>" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Supplier</label>
+    <select name="supplierId" class="form-select">
+      <% suppliers.forEach(s => { %>
+        <option value="<%= s._id %>" <%= product.supplierId == s._id ? "selected" : "" %>><%= s.name %></option>
+      <% }) %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Save</button>
+</form>

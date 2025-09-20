@@ -1,0 +1,166 @@
+swagger: "2.0"
+info:
+  title: "CRUD API"
+  version: "1.0.0"
+host: "localhost:3000"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /suppliers:
+    get:
+      summary: "Get all suppliers"
+      responses:
+        200:
+          description: "Successful response"
+    post:
+      summary: "Create supplier"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              address:
+                type: "string"
+              phone:
+                type: "string"
+      responses:
+        201:
+          description: "Created"
+  /suppliers/{id}:
+    put:
+      summary: "Update supplier"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              address:
+                type: "string"
+              phone:
+                type: "string"
+      responses:
+        200:
+          description: "Updated"
+        404:
+          description: "Supplier not found"
+    delete:
+      summary: "Delete supplier"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Deleted"
+        404:
+          description: "Supplier not found"
+  /products:
+    get:
+      summary: "Get all products"
+      responses:
+        200:
+          description: "Successful response"
+    post:
+      summary: "Create product"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              price:
+                type: "number"
+              supplierId:
+                type: "string"
+      responses:
+        201:
+          description: "Created"
+  
+  /products:
+    get:
+      summary: "Get all products"
+      responses:
+        200:
+          description: "Successful response"
+    post:
+      summary: "Create product"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              address:
+                type: "string"
+              phone:
+                type: "string"
+              supplierId:
+                type: "string"
+      responses:
+        201:
+          description: "Created"
+  /products/{id}:
+    put:
+      summary: "Update product"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              address:
+                type: "string"
+              phone:
+                type: "string"
+              supplierId:
+                type: "string"
+      responses:
+        200:
+          description: "Updated"
+        404:
+          description: "Product not found"
+    delete:
+      summary: "Delete product"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Deleted"
+        404:
+          description: "Product not found"

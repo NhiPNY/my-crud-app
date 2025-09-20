@@ -1,0 +1,33 @@
+<%- include("../layout", { title: "Products", body: `
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Products</h2>
+    <a href="/products/create" class="btn btn-success">+ Add Product</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Supplier</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(p => { %>
+        <tr>
+          <td><%= p.name %></td>
+          <td>$<%= p.price %></td>
+          <td><%= p.quantity %></td>
+          <td><%= p.supplierId ? p.supplierId.name : "N/A" %></td>
+          <td>
+            <a href="/products/edit/<%= p._id %>" class="btn btn-sm btn-warning">Edit</a>
+            <a href="/products/delete/<%= p._id %>" class="btn btn-sm btn-danger"
+               onclick="return confirm('Are you sure?')">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+` }) %>
